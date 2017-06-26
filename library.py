@@ -1,5 +1,6 @@
 class Book:
     def __init__(self):
+        self.collection = ''
         self.barcode = 0
         self.author = ''
         self.title = ''
@@ -18,7 +19,7 @@ class Book:
     def help(self):
         print "The following is the list of attributes available for", 
         print "a book object:"
-        print "barcode\nauthor\ntitle\nyear (published)\ntype ",
+        print "collection\nbarcode\nauthor\ntitle\nyear (published)\ntype ",
         print "(ebook, DVD, etc.)\nseries\nsubseries\nnumber ",
         print "(within (sub)series)\ntotal (books within (sub)series)\n",
         print "checkout (last checkout)\n",
@@ -27,6 +28,18 @@ class Book:
     #The following print functions can either print the formated
     #version of the given attribute or if a file object is given
     #will write to the file object
+    def print_collection(self, output=None):
+        if self.collection:
+            if output:
+                output.write("Collection:\t"+self.collection+"\n")
+            else:
+                print "Collection:\t", self.collection
+        else:
+            if output:
+                output.write("Collection:\tNO COLLECTION\n")
+            else:
+                print "Collection:\tNO COLLECTION"
+
     def print_barcode(self, output=None):
         if self.barcode:
             if output:
@@ -35,7 +48,7 @@ class Book:
                 print "Barcode:\t", self.barcode
         else:
             if output:
-                output.write("Barcode:\tNA\n")
+                output.write("Barcode:\tNO BARCODE\n")
             else:
                 print "Barcode:\tNO BARCODE"
 
@@ -184,6 +197,7 @@ class Book:
                 print "life:\t\tNA"
 
     def print_all(self, output=None):
+        self.print_collection(output)
         self.print_barcode(output)
         self.print_author(output)
         self.print_title(output)
@@ -215,9 +229,10 @@ class Collection:
         if output:
             output.write("Collection Title:\t"+self.name+"\n\n")
             for book in self.books:
-                output.write("------------count: "+str(count)+"-----------\n")
+                output.write("--------------count: ")
+                output.write(str(count)+"-------------\n")
                 book.print_all(output)
-                output.write("--------------------------------\n")
+                output.write("------------------------------------\n")
                 count += 1
         else:
             print "Collection Title:\t", self.name, "\n"

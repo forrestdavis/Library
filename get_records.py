@@ -1,4 +1,5 @@
 from library import *
+from read_mrk_file import *
 
 circ_data = open("data/scifi_circ.txt", 'r')
 output = open("output.txt",'w')
@@ -77,8 +78,8 @@ for line in circ_data:
     #Add book to collection
     scifi.add_book(book)
 
-#scifi.print_books(output)
-scifi.print_books()
+scifi.print_books(output)
+#scifi.print_books()
 
 circ_data.close()
 output.close()
