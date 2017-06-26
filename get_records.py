@@ -99,9 +99,24 @@ def read_mrk(filename):
         #Adds author, series title and series number at end of 
         #record to account for missing sections
         if not line:
-            #if not has800 and has490:
-                #print stored
-                
+            if not has800 and has490:
+                if "$v" in stored:
+                    stored = stored.split("  ")[1].split('$')
+                    for element in stored:
+                        if element[0] == "a":
+                            element = element[:len(element)-2]
+                            series_title = element[1:]
+                        if element[0] == "v":
+                            series_number = ''.join(filter(str.isdigit, element))
+                            if "one" in element:
+                                series_number = 1
+                            if "III" in element:
+                                series_number = 3
+                            elif "II" in element:
+                                series_number = 2
+                            elif "I" in element:
+                                series_number = 1               
+
             has800 = 0
             has490 = 0
             authors.append(author)
@@ -182,22 +197,35 @@ def full_record(circ_filename, mrk_filename, outname=None):
             book.series = series_titles[x]
             book.number = series_numbers[x]
 
-    scifi.print_books(output)
-
     if output:
         output.close()
+
+    return scifi
 
 if __name__ == "__main__":
     #filename = "data/example.mrk"
     circ_filename = "data/scifi_circ.txt"
     mrk_filename = "data/scifi_data.mrk"
-    outname = "output.txt"
-    full_record(circ_filename, mrk_filename, outname)
+    outname = "life_sorted.txt"
+    scifi = full_record(circ_filename, mrk_filename, outname)
+    outname = open(outname, "w")
+    scifi.Sort("life")
+    scifi.print_books(outname)
 
+    
     '''
-    authors, titles, series_titles, series_numbers = read_mrk(filename)
-    print authors
-    print titles
-    print series_titles
-    print series_numbers
+    series_books = scifi.Series()
+    count = 1
+    for key in series_books:
+        print "-------------count: ", count, "---------------"
+        print key, ":"
+        tmp = []
+        for elem in series_books[key]:
+            tmp.append(elem[0])
+        tmp.sort()
+        for elem in tmp:
+            print elem
+        print "----------------------------"
+        count += 1
+
     '''

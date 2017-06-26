@@ -247,6 +247,22 @@ class Collection:
         if sort_basis == "life":
             self.books = sorted(self.books, cmp=self.life_Sort)
 
+    def Series(self):
+
+        #key: value = title: [[1, book1], [2, book2], etc]
+        return_books = {}
+
+        for book in self.books:
+            if book.series != "NA":
+                if book.series not in return_books:
+                    return_books[book.series] = [[book.number, book]]
+                else:
+                    return_books[book.series].append([book.number, book])
+
+        return return_books
+
+
+
     def Search(self, basis, value, compare=None):
         self.Sort(basis)
         return_books = []
