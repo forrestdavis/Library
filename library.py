@@ -7,7 +7,6 @@ class Book:
         self.year = ''
         self.type = ''
         self.series = ''
-        self.subseries = ''
         self.number = 0
         self.total = 0
         self.checkout = ''
@@ -20,7 +19,7 @@ class Book:
         print "The following is the list of attributes available for", 
         print "a book object:"
         print "collection\nbarcode\nauthor\ntitle\nyear (published)\ntype ",
-        print "(ebook, DVD, etc.)\nseries\nsubseries\nnumber ",
+        print "(ebook, DVD, etc.)\nseries\nnumber ",
         print "(within (sub)series)\ntotal (books within (sub)series)\n",
         print "checkout (last checkout)\n",
         print "ytd (circulation)\nprev (circulation)\nlife (circulation)"
@@ -112,18 +111,6 @@ class Book:
             else:
                 print "Series:\t\tNA"
 
-    def print_subseries(self, output=None):
-        if self.subseries:
-            if output:
-                output.write("Subseries:\t"+self.subseries+"\n")
-            else:
-                print "Subseries:\t", self.subseries
-        else:
-            if output:
-                output.write("Subseries:\tNA\n")
-            else:
-                print "Subseries:\tNA"
-
     def print_number(self, output=None):
         if self.number > 0:
             if output:
@@ -204,7 +191,6 @@ class Book:
         self.print_year(output)
         self.print_type(output)
         self.print_series(output)
-        self.print_subseries(output)
         self.print_number(output)
         self.print_total(output)
         self.print_checkout(output)
@@ -265,6 +251,25 @@ class Collection:
         self.Sort(basis)
         return_books = []
 
+        #Search for specific book
+        if basis == "book":
+            search_author = value[0].lower()
+            search_title  = value[1].lower()
+            for book in self.books:
+                #Handle unicode error
+                if "{" in search_title:
+                    if search_title[:4] in book.title.lower():
+                        if search_author in book.author.lower():
+                            return_books.append(book)
+                if "{" in search_author:
+                    if search_title == book.title.lower():
+                        if search_author.split(",")[1] in book.author.lower():
+                            return_books.append(book)
+
+                if search_title == book.title.lower():
+                    if search_author in book.author.lower():
+                        return_books.append(book)
+
         #Search by Author
         if basis == "author":
             for book in self.books:
@@ -274,7 +279,7 @@ class Collection:
         #Search by Title
         if basis == "title":
             for book in self.books:
-                if value.lower() in book.title.lower():
+                if value.lower() == book.title.lower():
                     return_books.append(book)
                 
         #Search by circulation history

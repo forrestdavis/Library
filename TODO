@@ -4,4 +4,4 @@ Need to fix MARC file reader
 
 Need to add collection information
 
-Need to integrate read_mrk_file and get_records
+Need to figure out issue with records with only 490
