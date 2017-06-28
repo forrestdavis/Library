@@ -260,9 +260,6 @@ def load_record(filename):
     
     return scifi
 
-def update_record_series(collection, series):
-    print books
-
 def save_record(collection, filename):
     
     output = open(filename, "w")
@@ -304,134 +301,184 @@ def validate_series(collection, outname=None):
     else:
         collection.print_books()
 
-def get_missing(collection):
+def check_missing(miss, title):
+    in_missing = 0
+    for line in miss:
+        if "title" in line:
+            in_missing = 1
+
+    return in_missing
+
+
+def check_trash(trash, book):
+    in_trash = 0
+    for line in trash:
+        if book.title in line:
+            in_trash = 1
+
+    return in_trash
+
+def weed(collection):
+
+    missing_file = open("missing.txt", "a")
+    trash_file = open("trash.txt", "a")
 
     series_books = collection.Series()
-    missing = open("missing.txt", "w")
-    trash = open("trash.txt", "w")
 
-    for series in series_books:
-        poss = len(series_books[series])
-        if series_books[series][0][1].total == "NA":
-            series_books[series][0][1].total = 0
-        act = int(series_books[series][0][1].total)
-
-        if poss == act:
-            books = []
-            tmp = range(1, act+1)
-            for book in series_books[series]:
-                if book[1].number not in tmp:
-                    print "error: "
-                    print book[1].print_all()
-                    value = raw_input("Change number, total, or series? ")
-                    if value == "number":
-                        num = raw_input("What is number? ")
-                        book[1].number = int(num)
-                    if value == "total":
-                        num = raw_input("What is the total? ")
-                        book[1].total = int(num)
-                    if value == "series":
-                        s = raw_input("What is the series title? ")
-                        book[1].series = s
-                        num = raw_input("What is the book number? ")
-                        book[1].number = int(num)
-                        num = raw_input("What is the total number? ")
-                        book[1].total = int(num)
-                    save_record(collection, "full_record.txt")
-                else:
-                    tmp.remove(int(book[1].number))
-                    books.append(book[1])
-
-            if tmp:
-                print '------------------------'
-                print series
-                print '------------------------'
-                author = books[0].author
-                
-                for book in books:
-                    book.print_all()
-                x = raw_input("Add to missing? or move all trash? ")
-                if x == "missing":
-                    title = raw_input("Title? ")
-                    missing.write("-------------------------\n")
-                    missing.write(series+"\n")
-                    missing.write(author+'\n')
-                    missing.write(title+'\n')
-                    missing.write("-------------------------\n")
-                if x == "trash":
-                    for book in books:
-                        books.print_all(trash)
+    w_checkout = 2016
+    w_life = 10
+    
+    count = 1
+    for book in collection.books:
+        b_checkout = book.checkout.split()[0].split("/")
+        if b_checkout[0] == "NA":
+            b_checkout = 0
         else:
-            tmp = range(1, act+1)
-            books = []
-            miss_books = []
-            print "------------------------------"
-            print series
-            print "------------------------------"
-            for book in series_books[series]:
-                if tmp[0] == book[0]:
-                    book[1].print_all()
-                    value = raw_input("Update record [y/n]? ")
-                    if value == "y":
-                        value = ''
-                        while value != "done":
-                            option = raw_input("Change what? ")
-                            value = raw_input("Value: ")
-                            if option == "number":
-                                book[1].number = int(value)
-                            if option == "total":
-                                book[1].total = int(value)
-                            if option == "series":
-                                book[1].series = value
-                            if option == "search":
-                                x = collection.Search('title', value)
-                                for i in x:
-                                    i.print_all()
+            b_checkout = int(b_checkout[2])
+        b_life = book.life
 
+        if b_checkout < w_checkout and b_life < w_life:
+            if book.series != "NA":
+                check_pairs = series_books[book.series]
+                check_series(collection, check_pairs, trash_file, missing_file)
+                count += 1
+            else:
+                print "----------------------------"
+                book.print_all()
+                print '----------------------------'
+                value = raw_input("Trash book [y/n]? ")
+                if value == "y":
+                    trash_file.write('---------------------------')
+                    book.print_all(trash_file)
+                    trash_file.write('---------------------------')
+
+    trash_file.close()
+    missing_file.close()
+
+def update_series(collection, check_pairs, trash_file, missing_file, total_num=None):
+    
+    value = ''
+    while value != "done":
+        value = raw_input("What would you like to do with series? ")
+        if value == "h" or value == "help":
+            print "Options: "
+            print "\tlist:\tlist current books in series"
+            print "\tsearch:\tsearch for title"
+            print "\tupdate:\tchange values of record"
+            print "\ttrash:\tmark record as trash"
+            print '\tmissing:\tmark missing books'
+        if value == "list":
+            for pair in check_pairs:
+                print "---------------------------"
+                print pair[1].print_all()
+                print "---------------------------"
+
+        if value == "search":
+            title = raw_input("What is the search title? ")
+            return_books = collection.Search('title', title)
+            print "Return Values: "
+            for book in return_books:
+                print '-------------------------------'
+                book.print_all()
+                print '-------------------------------'
+                y_n = raw_input("Is this the book? ")
+                if "y" in y_n:
+                    y_n = raw_input("Would you like to change this record? ")
+                    if y_n == "y":
+                        inner_value = ''
+                        while inner_value != 'done':
+                            inner_value = raw_input("What would you like to update? ")
+                            change_value = raw_input("Value: ")
+
+                            if inner_value == "series":
+                                book.series = change_value
+                            if inner_value == "number":
+                                book.number = int(change_value)
+                            if inner_value == "total":
+                                book.total = int(change_value)
                         save_record(collection, "full_record.txt")
-                    tmp.pop(0)
-                while tmp[0] != book[0]:
-                    print "Missing book number ", tmp.pop(0)
-                    value = raw_input("What is the title? ")
-                    look = collection.Search("title", value)
-                    if look:
-                        print "There are books in the collection with this title"
-                        changed = 0
-                        for b in look:
-                            b.print_all()
-                            value = raw_input("Is this book you are looking for? ")
-                            if value == "y":
-                                b.series = 
+                        collection = load_record("full_record.txt")
+                        update_series = collection.Series()
+                        check_pairs = update_series[check_pairs[0][1].series]
+                        
+
+        if value == "update":
+            for pair in check_pairs:
+                print '---------------------------------'
+                pair[1].print_all()
+                print '---------------------------------'
+
+                y_n = raw_input("Would you like to change this record? ")
+                if y_n == "y":
+                    inner_value = ''
+                    while inner_value != 'done':
+                        inner_value = raw_input("What would you like to update? ")
+                        change_value = raw_input("Value: ")
+
+                        if inner_value == "series":
+                            pair[1].series = change_value
+                        if inner_value == "number":
+                            pair[1].number = int(change_value)
+                        if inner_value == "total":
+                            pair[1].total = int(change_value)
+
+            save_record(collection, "full_record.txt")
+            collection = load_record("full_record.txt")
+            update_series = collection.Series()
+            check_pairs = update_series[check_pairs[0][1].series]
+       
+        if value == "trash":
+            for pair in check_pairs:
+                trash_file.write("-----------------------------")
+                pair[1].print_all(trash_file)
+                trash_file.write("-----------------------------")
+        
+        if value == "missing":
+            while total_num:
+                if check_pairs:
+                    if total_num[0] == check_pairs[0][0]:
+                        total_num.pop(0)
+                        pair = check_pairs.pop(0)
+                        missing_file.write('----------------------------')
+                        pair[1].print_all(missing_file)
+                        missing_file.write('----------------------------')
+                    elif total_num[0] != check_pairs[0][0]:
+                        missing_num = total_num.pop(0)
+                        print "Missing book number: ", missing_num
+                        inner_value = raw_input("What is the title? ")
+                        missing_file.write('----------------------------\n')
+                        missing_file.write("MISSING BOOK: "+inner_value+'\n')
+                        missing_file.write('----------------------------\n')
+                else:
+                    missing_num = total_num.pop(0)
+                    print "Missing book number: ", missing_num
+                    inner_value = raw_input("What is the title? ")
+                    missing_file.write('----------------------------\n')
+                    missing_file.write("MISSING BOOK: "+inner_value)
+                    missing_file.write('----------------------------\n')
 
 
-                    miss_books.append(value)
-                books.append(book[1])
-            value = raw_input("trash or mark missing? ")
-            if value == "trash":
-                for book in books:
-                    books.print_all(trash)
-            if value == "missing":
-                author = books[0].author
-                for title in miss_books:
-                    missing.write("-------------------------\n")
-                    missing.write(series+"\n")
-                    missing.write(author+'\n')
-                    missing.write(title+'\n')
-                    missing.write("-------------------------\n")
+def check_series(collection, check_pairs, trash_file, missing_file):
 
+    total_num = range(1, int(check_pairs[0][1].total)+1)
 
-    missing.close()
-    trash.close()
+    if len(check_pairs) == len(total_num):
+        print "The following series is complete but infrequent: "
+        print "--------------------------------------"
+        check_pairs[0][1].print_series()
+        print "--------------------------------------"
+        update_series(collection, check_pairs, trash_file, missing_file)
+
+    if len(check_pairs) != len(total_num):
+        print "The following series is incomplete"
+        print "--------------------------------------"
+        check_pairs[0][1].print_series()
+        print "--------------------------------------"
+        update_series(collection, check_pairs, trash_file, missing_file, total_num)
+
 
 if __name__ == "__main__":
     filename = "full_record.txt"
     scifi = load_record(filename)
 
-
-    #job = raw_input("What do you want to do? ")
-    
-    #if job.lower() == "series":
-
-    get_missing(scifi)
-
-    
+    weed(scifi)

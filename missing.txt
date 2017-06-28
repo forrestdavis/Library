@@ -1,0 +1,86 @@
+----------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000532599
+Author:		Weber, David, 1952-
+Title:		Off Armageddon Reef
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		1
+Total:		9
+Checkout:	4/27/2017 2:34:32 PM
+ytd:		1
+prev:		2
+life:		10
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000536301
+Author:		Weber, David, 1952-
+Title:		By schism rent asunder
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		2
+Total:		9
+Checkout:	5/11/2017 2:33:16 PM
+ytd:		1
+prev:		1
+life:		8
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000629338
+Author:		Weber, David, 1952-
+Title:		By heresies distressed
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		3
+Total:		9
+Checkout:	5/17/2017 12:35:25 PM
+ytd:		1
+prev:		1
+life:		7
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000609025
+Author:		Weber, David, 1952-
+Title:		A mighty fortress
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		4
+Total:		9
+Checkout:	5/23/2017 12:36:52 PM
+ytd:		1
+prev:		1
+life:		5
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000658030
+Author:		Weber, David, 1952-
+Title:		How firm a foundation
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		5
+Total:		9
+Checkout:	5/30/2017 12:30:42 PM
+ytd:		1
+prev:		1
+life:		5
+--------------------------------------------------------
+MISSING BOOK: Midst Toil and Tribulation
+----------------------------
+----------------------------
+MISSING BOOK: Like a Mighty Army
+----------------------------
+----------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000798174
+Author:		Weber, David, 1952-
+Title:		Hell's foundations quiver
+Year:		NA
+Type:		NA
+Series:		Safehold series
+Number:		8
+Total:		9
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+--------------------------------------------------------
+MISSING BOOK: At the Sign of Triumph----------------------------

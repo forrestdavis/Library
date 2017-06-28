@@ -834,7 +834,7 @@ Year:		NA
 Type:		NA
 Series:		Neverwinter
 Number:		4
-Total:		3
+Total:		4
 Checkout:	NA
 ytd:		0
 prev:		0
@@ -1252,7 +1252,7 @@ Author:		Brooks, Terry.
 Title:		The High Druid's blade : the Defenders of Shannara
 Year:		NA
 Type:		NA
-Series:		Defenders of Shannara.
+Series:		Defenders of Shannara
 Number:		1
 Total:		3
 Checkout:	7/15/2016 4:43:32 PM
@@ -1282,9 +1282,9 @@ Author:		Lackey, Mercedes
 Title:		Bastion
 Year:		NA
 Type:		NA
-Series:		Novel of Valdemar.
+Series:		The collegium chronicles
 Number:		5
-Total:		NA
+Total:		5
 Checkout:	NA
 ytd:		0
 prev:		0
@@ -1313,8 +1313,8 @@ Title:		Burdens of the dead
 Year:		NA
 Type:		NA
 Series:		Heirs of Alexandria series.
-Number:		4
-Total:		4
+Number:		5
+Total:		5
 Checkout:	1/3/2017 3:06:43 PM
 ytd:		1
 prev:		0
@@ -1687,8 +1687,8 @@ Author:		Lackey, Mercedes.
 Title:		Brightly burning
 Year:		NA
 Type:		NA
-Series:		Novel of Valdemar.
-Number:		4
+Series:		NA
+Number:		NA
 Total:		NA
 Checkout:	8/29/2013 12:00:00 AM
 ytd:		0
@@ -2047,7 +2047,7 @@ Author:		Lackey, Mercedes.
 Title:		The shadow of the lion
 Year:		NA
 Type:		NA
-Series:		NA
+Series:		Heirs of Alexandria series.
 Number:		NA
 Total:		NA
 Checkout:	11/15/2016 4:00:13 PM
@@ -3472,9 +3472,9 @@ Author:		Card, Orson Scott.
 Title:		The call of earth
 Year:		NA
 Type:		NA
-Series:		Homecoming
+Series:		Homecoming Saga
 Number:		2
-Total:		3
+Total:		5
 Checkout:	5/14/2016 12:00:00 AM
 ytd:		0
 prev:		0
@@ -3487,9 +3487,9 @@ Author:		Card, Orson Scott.
 Title:		Earthborn
 Year:		NA
 Type:		NA
-Series:		Homecoming
+Series:		Homecoming Saga
 Number:		5
-Total:		3
+Total:		5
 Checkout:	12/17/2013 12:00:00 AM
 ytd:		0
 prev:		0
@@ -3502,9 +3502,9 @@ Author:		Card, Orson Scott.
 Title:		Earthfall
 Year:		NA
 Type:		NA
-Series:		Homecoming
+Series:		Homecoming Saga
 Number:		4
-Total:		3
+Total:		5
 Checkout:	12/17/2013 12:00:00 AM
 ytd:		0
 prev:		0
@@ -3517,9 +3517,9 @@ Author:		Card, Orson Scott.
 Title:		The memory of earth
 Year:		NA
 Type:		NA
-Series:		Homecoming
+Series:		Homecoming Saga
 Number:		1
-Total:		3
+Total:		5
 Checkout:	4/12/2017 11:48:07 AM
 ytd:		2
 prev:		0
@@ -3577,9 +3577,9 @@ Author:		Card, Orson Scott.
 Title:		The ships of Earth
 Year:		NA
 Type:		NA
-Series:		Homecoming
+Series:		Homecoming Saga
 Number:		3
-Total:		3
+Total:		5
 Checkout:	5/14/2016 12:00:00 AM
 ytd:		0
 prev:		0
@@ -5257,9 +5257,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		Sojourn
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
+Series:		The Dark Elf Trilogy
 Number:		3
-Total:		30
+Total:		3
 Checkout:	8/17/2011 12:00:00 AM
 ytd:		0
 prev:		0
@@ -6337,7 +6337,7 @@ Author:		Card, Orson Scott.
 Title:		Ender's game
 Year:		NA
 Type:		NA
-Series:		Ender Wiggin
+Series:		Ender saga
 Number:		1
 Total:		6
 Checkout:	7/20/2016 2:40:50 PM
@@ -7012,7 +7012,7 @@ Author:		Card, Orson Scott.
 Title:		Ender in exile
 Year:		NA
 Type:		NA
-Series:		Ender Wiggin
+Series:		Ender saga
 Number:		6
 Total:		6
 Checkout:	11/21/2016 10:46:53 AM
@@ -7177,9 +7177,9 @@ Author:		Weis, Margaret.
 Title:		Bones of the dragon
 Year:		NA
 Type:		NA
-Series:		NA
-Number:		NA
-Total:		NA
+Series:		Dragonships.
+Number:		1
+Total:		4
 Checkout:	12/23/2010 12:00:00 AM
 ytd:		0
 prev:		0
@@ -7267,9 +7267,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		Homeland
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
+Series:		The Dark Elf Trilogy
 Number:		1
-Total:		30
+Total:		3
 Checkout:	11/15/2014 12:00:00 AM
 ytd:		0
 prev:		0
@@ -7282,9 +7282,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		Exile
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
+Series:		The Dark Elf Trilogy
 Number:		2
-Total:		30
+Total:		3
 Checkout:	7/16/2012 12:00:00 AM
 ytd:		0
 prev:		0
@@ -7342,9 +7342,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		The crystal shard
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
-Number:		4
-Total:		30
+Series:		Icewind Dale
+Number:		1
+Total:		3
 Checkout:	12/29/2016 3:09:10 PM
 ytd:		0
 prev:		1
@@ -7357,9 +7357,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		Streams of silver.
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
-Number:		5
-Total:		30
+Series:		Icewind Dale
+Number:		2
+Total:		3
 Checkout:	3/17/2016 12:00:00 AM
 ytd:		0
 prev:		0
@@ -7372,9 +7372,9 @@ Author:		Salvatore, R. A., 1959-
 Title:		The halfling's gem
 Year:		NA
 Type:		NA
-Series:		Legend of Drizzt
-Number:		6
-Total:		30
+Series:		Icewind Dale
+Number:		3
+Total:		3
 Checkout:	8/23/2010 12:00:00 AM
 ytd:		0
 prev:		0
@@ -8782,7 +8782,7 @@ Author:		Salvatore, R. A., 1959-
 Title:		Gauntlgrym
 Year:		NA
 Type:		NA
-Series:		Neverwinter trilogy
+Series:		Neverwinter
 Number:		1
 Total:		4
 Checkout:	2/6/2013 12:00:00 AM
@@ -9519,7 +9519,7 @@ Year:		NA
 Type:		NA
 Series:		Neverwinter
 Number:		2
-Total:		3
+Total:		4
 Checkout:	2/11/2013 12:00:00 AM
 ytd:		0
 prev:		0

@@ -1,0 +1,209 @@
+---------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000821539
+Author:		Lackey, Mercedes
+Title:		Silence : a novel of the SERRAted Edge
+Year:		NA
+Type:		NA
+Series:		NA
+Number:		NA
+Total:		NA
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000557836
+Author:		Weis, Margaret.
+Title:		Bones of the dragon
+Year:		NA
+Type:		NA
+Series:		Dragonships.
+Number:		1
+Total:		4
+Checkout:	12/23/2010 12:00:00 AM
+ytd:		0
+prev:		0
+life:		4
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000677923
+Author:		Weis, Margaret.
+Title:		Rage of the dragon
+Year:		NA
+Type:		NA
+Series:		Dragonships.
+Number:		3
+Total:		4
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000809302
+Author:		Weis, Margaret.
+Title:		Doom of the dragon
+Year:		NA
+Type:		NA
+Series:		Dragonships.
+Number:		4
+Total:		4
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000795816
+Author:		Lawhead, Stephen R., 1950-
+Title:		The iron lance
+Year:		NA
+Type:		NA
+Series:		Celtic crusades
+Number:		1
+Total:		3
+Checkout:	11/4/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		1
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000692906
+Author:		Lawhead, Stephen R., 1950-
+Title:		The black rood
+Year:		NA
+Type:		NA
+Series:		Celtic crusades
+Number:		2
+Total:		3
+Checkout:	11/17/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		11
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000796491
+Author:		Lawhead, Stephen R., 1950-
+Title:		The mystic rose
+Year:		NA
+Type:		NA
+Series:		Celtic crusades
+Number:		3
+Total:		3
+Checkout:	11/23/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		1
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000794884
+Author:		McCammon, Robert R.
+Title:		The Border
+Year:		NA
+Type:		NA
+Series:		NA
+Number:		NA
+Total:		NA
+Checkout:	9/2/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		1
+------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000801846
+Author:		Bova, Ben, 1932-
+Title:		Death wave
+Year:		NA
+Type:		NA
+Series:		NA
+Number:		NA
+Total:		NA
+Checkout:	12/26/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		3
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000608779
+Author:		Hobb, Robin.
+Title:		Dragon keeper : volume one of the rain wilds chronicles
+Year:		NA
+Type:		NA
+Series:		Rain Wilds chronicles
+Number:		1
+Total:		4
+Checkout:	6/24/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		6
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000612862
+Author:		Hobb, Robin.
+Title:		Dragon haven
+Year:		NA
+Type:		NA
+Series:		Rain Wilds chronicles
+Number:		2
+Total:		4
+Checkout:	6/20/2014 12:00:00 AM
+ytd:		0
+prev:		0
+life:		8
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000792508
+Author:		Hobb, Robin
+Title:		Blood of dragons
+Year:		NA
+Type:		NA
+Series:		Rain Wilds chronicles
+Number:		4
+Total:		4
+Checkout:	10/3/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		1
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000792094
+Author:		Scalzi, John, 1969-
+Title:		The end of all things
+Year:		NA
+Type:		NA
+Series:		NA
+Number:		NA
+Total:		NA
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000787391
+Author:		Robinson, Kim Stanley
+Title:		Aurora
+Year:		NA
+Type:		NA
+Series:		NA
+Number:		NA
+Total:		NA
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+--------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000779075
+Author:		Salvatore, R. A.
+Title:		Vengeance of the iron dwarf
+Year:		NA
+Type:		NA
+Series:		Companions codex
+Number:		3
+Total:		3
+Checkout:	NA
+ytd:		0
+prev:		0
+life:		0
+----------------------------------------------------------Collection:	Adult Fiction - Science Fiction
+Barcode:	39870000777293
+Author:		Shannon, Samantha
+Title:		The mime order
+Year:		NA
+Type:		NA
+Series:		Bone season
+Number:		2
+Total:		3
+Checkout:	3/6/2015 12:00:00 AM
+ytd:		0
+prev:		0
+life:		1
+-----------------------------
