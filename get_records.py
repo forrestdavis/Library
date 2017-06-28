@@ -179,9 +179,11 @@ def read_mrk(filename):
     data.close()
     return authors, titles, series_titles, series_numbers
 
-def full_record(circ_filename, mrk_filename, outname=None):
+def create_record(circ_filename, mrk_filename, outname=None):
+
     if outname:
-        output = open(outname, "w")
+        output = open(outname, 'w')
+
     else:
         output = outname
 
@@ -197,35 +199,239 @@ def full_record(circ_filename, mrk_filename, outname=None):
             book.series = series_titles[x]
             book.number = series_numbers[x]
 
+    scifi.print_books(output)
+
     if output:
         output.close()
 
     return scifi
 
-if __name__ == "__main__":
-    #filename = "data/example.mrk"
-    circ_filename = "data/scifi_circ.txt"
-    mrk_filename = "data/scifi_data.mrk"
-    outname = "life_sorted.txt"
-    scifi = full_record(circ_filename, mrk_filename, outname)
-    outname = open(outname, "w")
-    scifi.Sort("life")
-    scifi.print_books(outname)
-
+def load_record(filename):
     
-    '''
-    series_books = scifi.Series()
-    count = 1
-    for key in series_books:
-        print "-------------count: ", count, "---------------"
-        print key, ":"
-        tmp = []
-        for elem in series_books[key]:
-            tmp.append(elem[0])
-        tmp.sort()
-        for elem in tmp:
-            print elem
-        print "----------------------------"
+    data = open(filename, "r")
+
+    scifi = Collection()
+    count = 0
+    new = 0
+    for line in data:
+        line = line.strip()
+        if "--count:" in line:
+            count = 0
+            new = 1
+            book = Book()
+        elif "------" in line:
+            scifi.add_book(book)
+            new = 0
+        elif new:
+            line = line.split("\t")
+            line = line[len(line)-1]
+            if count == 1:
+                book.collection = line
+            if count == 2:
+                book.barcode = line
+            if count == 3:
+                book.author = line
+            if count == 4:
+                book.title = line
+            if count == 5:
+                book.year = line
+            if count == 6:
+                book.type = line
+            if count == 7:
+                book.series = line
+            if count == 8:
+                if line == "NA":
+                    book.number = 0
+                else:
+                    book.number = int(line)
+            if count == 9:
+                book.total = line
+            if count == 10:
+                book.checkout = line
+            if count == 11:
+                book.ytd = int(line)
+            if count == 12:
+                book.prev = int(line)
+            if count == 13:
+                book.life = int(line)
         count += 1
 
-    '''
+    data.close()
+    
+    return scifi
+
+def update_record_series(collection, series):
+    print books
+
+def save_record(collection, filename):
+    
+    output = open(filename, "w")
+
+    collection.print_books(output)
+
+    output.close()
+
+def validate_series(collection, outname=None):
+    series_books = collection.Series()
+
+    for series in series_books:
+        total = -1
+        print "--------------------------------"
+        print series
+        print "--------------------------------"
+        if series_books[series][0][1].total != "NA":
+            continue
+        for pair in series_books[series]:
+            print "\t", pair[0]
+            pair[1].print_all()
+            if pair[1].total == "NA":
+                if pair[1].number == "NA" or pair[1].number == 0:
+                    fix = raw_input("What is this book's series number? ")
+                    pair[1].number = int(fix)
+                if total != -1:
+                    pair[1].total = total
+                else:
+                    tmp = raw_input("How many books in this series? ")
+                    if tmp == "stop":
+                        save_record(scifi, filename)
+                        break
+                    else:
+                        total = int(tmp)
+                        pair[1].total = total
+    
+    if outname:
+        save_record(scifi, outname)
+    else:
+        collection.print_books()
+
+def get_missing(collection):
+
+    series_books = collection.Series()
+    missing = open("missing.txt", "w")
+    trash = open("trash.txt", "w")
+
+    for series in series_books:
+        poss = len(series_books[series])
+        if series_books[series][0][1].total == "NA":
+            series_books[series][0][1].total = 0
+        act = int(series_books[series][0][1].total)
+
+        if poss == act:
+            books = []
+            tmp = range(1, act+1)
+            for book in series_books[series]:
+                if book[1].number not in tmp:
+                    print "error: "
+                    print book[1].print_all()
+                    value = raw_input("Change number, total, or series? ")
+                    if value == "number":
+                        num = raw_input("What is number? ")
+                        book[1].number = int(num)
+                    if value == "total":
+                        num = raw_input("What is the total? ")
+                        book[1].total = int(num)
+                    if value == "series":
+                        s = raw_input("What is the series title? ")
+                        book[1].series = s
+                        num = raw_input("What is the book number? ")
+                        book[1].number = int(num)
+                        num = raw_input("What is the total number? ")
+                        book[1].total = int(num)
+                    save_record(collection, "full_record.txt")
+                else:
+                    tmp.remove(int(book[1].number))
+                    books.append(book[1])
+
+            if tmp:
+                print '------------------------'
+                print series
+                print '------------------------'
+                author = books[0].author
+                
+                for book in books:
+                    book.print_all()
+                x = raw_input("Add to missing? or move all trash? ")
+                if x == "missing":
+                    title = raw_input("Title? ")
+                    missing.write("-------------------------\n")
+                    missing.write(series+"\n")
+                    missing.write(author+'\n')
+                    missing.write(title+'\n')
+                    missing.write("-------------------------\n")
+                if x == "trash":
+                    for book in books:
+                        books.print_all(trash)
+        else:
+            tmp = range(1, act+1)
+            books = []
+            miss_books = []
+            print "------------------------------"
+            print series
+            print "------------------------------"
+            for book in series_books[series]:
+                if tmp[0] == book[0]:
+                    book[1].print_all()
+                    value = raw_input("Update record [y/n]? ")
+                    if value == "y":
+                        value = ''
+                        while value != "done":
+                            option = raw_input("Change what? ")
+                            value = raw_input("Value: ")
+                            if option == "number":
+                                book[1].number = int(value)
+                            if option == "total":
+                                book[1].total = int(value)
+                            if option == "series":
+                                book[1].series = value
+                            if option == "search":
+                                x = collection.Search('title', value)
+                                for i in x:
+                                    i.print_all()
+
+                        save_record(collection, "full_record.txt")
+                    tmp.pop(0)
+                while tmp[0] != book[0]:
+                    print "Missing book number ", tmp.pop(0)
+                    value = raw_input("What is the title? ")
+                    look = collection.Search("title", value)
+                    if look:
+                        print "There are books in the collection with this title"
+                        changed = 0
+                        for b in look:
+                            b.print_all()
+                            value = raw_input("Is this book you are looking for? ")
+                            if value == "y":
+                                b.series = 
+
+
+                    miss_books.append(value)
+                books.append(book[1])
+            value = raw_input("trash or mark missing? ")
+            if value == "trash":
+                for book in books:
+                    books.print_all(trash)
+            if value == "missing":
+                author = books[0].author
+                for title in miss_books:
+                    missing.write("-------------------------\n")
+                    missing.write(series+"\n")
+                    missing.write(author+'\n')
+                    missing.write(title+'\n')
+                    missing.write("-------------------------\n")
+
+
+    missing.close()
+    trash.close()
+
+if __name__ == "__main__":
+    filename = "full_record.txt"
+    scifi = load_record(filename)
+
+
+    #job = raw_input("What do you want to do? ")
+    
+    #if job.lower() == "series":
+
+    get_missing(scifi)
+
+    

@@ -236,6 +236,7 @@ class Collection:
 
     def life_Sort(self, book1, book2):
         return book1.life - book2.life
+
         
     def Sort(self, sort_basis):
         if sort_basis == "ytd":
@@ -246,6 +247,9 @@ class Collection:
 
         if sort_basis == "life":
             self.books = sorted(self.books, cmp=self.life_Sort)
+
+    def getKey(self, item):
+        return item[0]
 
     def Series(self):
 
@@ -259,12 +263,14 @@ class Collection:
                 else:
                     return_books[book.series].append([book.number, book])
 
+        #Sort series
+        for series in return_books:
+            l = return_books[series]
+            return_books[series] = sorted(l, key=self.getKey)
+
         return return_books
 
-
-
     def Search(self, basis, value, compare=None):
-        self.Sort(basis)
         return_books = []
 
         #Search for specific book

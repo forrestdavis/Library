@@ -4,8 +4,6 @@ Need to fix MARC file reader
 
 Need to add collection information
 
-
-Need to store created record
 Need to write module for storing series information (given series name is the series completed? what books are missing?)
 
 Beef up Search module so that can limit by a variety of factors
